@@ -1,0 +1,31 @@
+.botao {
+    height: 5rem;
+    width: 10rem;
+    margin: 0.5rem;
+}
+
+.caixa {
+    height: 5rem;
+    width: 10rem;
+    margin: 0.5rem;
+    background-color: pink;
+}
+
+.caixa2 {
+    height: 5rem;
+    width: 10rem;
+    margin: 0.5rem;
+    background-color: blue;
+}
+
+.pink {
+    background-color: pink;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.hidden {
+    display: none;
+}
