@@ -4,7 +4,7 @@ A comprehensive collection of JavaScript projects created to learn DOM manipulat
 
 ## 📋 About the Projects
 
-This repository contains four progressive JavaScript projects designed to practice essential web development skills:
+This repository contains five progressive JavaScript projects designed to practice essential web development skills:
 
 ### 🎨 Project 1: Color Box (exe1)
 A simple project featuring a box that changes color through button interactions.
@@ -17,6 +17,9 @@ A multi-functional project demonstrating various DOM manipulation techniques inc
 
 ### ➕ Project 4: Calculator (exe4)
 A form-based calculator project that demonstrates input handling, number conversion, and dynamic button state management.
+
+### 🎯 Project 5: JavaScript Fundamentals Challenge (exe5)
+A comprehensive challenge project covering JavaScript fundamentals Part 1, including variables, data types, operators, conditionals, and practical coding exercises.
 
 ## 🚀 Features
 
@@ -49,6 +52,19 @@ A form-based calculator project that demonstrates input handling, number convers
 - ✅ Number conversion from strings
 - ✅ Modern UI with Tailwind CSS
 - ✅ Console output for results
+
+### JavaScript Fundamentals Challenge (exe5)
+- ✅ Values and Variables exercises
+- ✅ Data Types exploration
+- ✅ Let, const, and var usage
+- ✅ Strings and Template Literals
+- ✅ BMI Comparison Challenge
+- ✅ Type Conversion and Coercion
+- ✅ Equality Operators (== vs ===)
+- ✅ Logical Operators
+- ✅ Switch Statements
+- ✅ Conditional (Ternary) Operators
+- ✅ Multiple practical coding challenges
 
 ## 🛠️ Technologies Used
 
@@ -83,6 +99,10 @@ Projecto-test-mig/
 │   ├── index.html
 │   └── script.js
 │
+├── exe5/                    # JavaScript Fundamentals Challenge
+│   ├── Index.html          # HTML file (references script.js)
+│   └── script.js           # JavaScript fundamentals exercises
+│
 └── README.md               # This unified documentation
 ```
 
@@ -115,6 +135,16 @@ Projecto-test-mig/
 4. Click the buttons to perform addition
 5. Check the browser console for results
 6. Notice how the button becomes enabled/disabled based on input
+
+### JavaScript Fundamentals Challenge (exe5)
+1. Navigate to the `exe5/` directory
+2. Open `Index.html` in your browser
+3. Open the browser's developer console (F12)
+4. Uncomment different sections in `script.js` to run various exercises
+5. Observe the console output for each fundamental concept
+6. Practice with different values and scenarios
+
+**Note**: The HTML file correctly references `script.js` (updated from the original `assignments.js`)
 
 ## 🎯 Main Code Examples
 
@@ -227,6 +257,49 @@ num1.addEventListener("input", checkInputs);
 num2.addEventListener("input", checkInputs);
 ```
 
+### JavaScript Fundamentals Challenge (exe5/script.js)
+```javascript
+// Values and Variables
+let country = "Portugal";
+let continent = "Europe";
+let population = 1500000;
+console.log(`I live in ${country} that is in ${continent} that have ${population}`);
+
+// BMI Comparison Challenge
+const massMark = 78;
+const heightMark = 1.69;
+const bmiMark = massMark / (heightMark * heightMark);
+
+const massJohn = 92;
+const heightJohn = 1.95;
+const bmiJohn = massJohn / (heightJohn * heightJohn);
+
+const markHigherBMI = bmiJohn > bmiMark;
+console.log(markHigherBMI);
+
+// Switch Statement
+const language = 'spanish';
+switch (language){
+    case 'chinese':
+    case 'manderin':
+        console.log('MOST number of native speakers!')
+        break;
+    case 'spanish':
+        console.log('2nd place in number of native speakers')
+        break;
+    case 'english':
+        console.log('3rd place')
+        break;
+    default:
+        console.log('Great language too :D')
+}
+
+// Ternary Operator
+const population = 33;
+population >= 33 ? console.log("Portugal's population is above average") : 
+    console.log("Portugal's population is below average");
+```
+
 ## 🎓 Concepts Learned
 
 ### Core JavaScript Skills
@@ -241,12 +314,21 @@ num2.addEventListener("input", checkInputs);
 - **Type Conversion**: Converting strings to numbers
 - **Event Listeners**: Real-time input monitoring
 - **Conditional Logic**: Dynamic button state management
+- **Variable Declarations**: Understanding let, const, and var
+- **Data Types**: Working with strings, numbers, booleans, and undefined
+- **Type Conversion**: Automatic and manual type coercion
+- **Comparison Operators**: == vs === and logical comparisons
+- **Mathematical Operations**: BMI calculations and arithmetic
+- **Control Flow**: if/else statements and switch cases
+- **Ternary Operators**: Concise conditional expressions
+- **Template Literals**: String interpolation with backticks
 
 ### Project-Specific Learning
 - **Color Box**: Focus on visual feedback and color management
 - **Name Display**: Text content manipulation and button state management
 - **Box Controls**: Advanced DOM manipulation and toggle functionality
 - **Calculator**: Form handling, input validation, and dynamic UI states
+- **JavaScript Fundamentals**: Core language concepts, data manipulation, and algorithmic thinking
 
 ## 🌟 Possible Future Improvements
 
@@ -285,6 +367,16 @@ num2.addEventListener("input", checkInputs);
 - [ ] Create a history of calculations
 - [ ] Add scientific calculator functions
 - [ ] Implement input validation for non-numeric characters
+
+### JavaScript Fundamentals Challenge (exe5)
+- [ ] Add more BMI comparison scenarios
+- [ ] Create interactive prompts for user input
+- [ ] Add more language cases to the switch statement
+- [ ] Implement error handling for invalid inputs
+- [ ] Add more mathematical challenges
+- [ ] Create a quiz system to test understanding
+- [ ] Add visual feedback for console outputs
+- [ ] Implement data persistence with localStorage
 
 ## 🤝 Contributing
 
