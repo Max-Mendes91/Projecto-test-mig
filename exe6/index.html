@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Card Generator</title>
+</head>
+
+<body>
+    <div id="card-container" class="flex flex-wrap justify-center gap-6 p-6"></div>
+    <template id="card-template">
+        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition transform">
+            <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-purple-500 mb-4">
+                <img src="calendar.png" alt="calendar" class="w-6 h-6">
+            </div>
+            <h2 class="font-semibold text-lg mb-2">Research</h2>
+            <p class="text-gray-600 text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto ducimus sequi maiores.
+            </p>
+        </div>
+    </template>
+</body>
+<script src="script.js"></script>
+
+</html>
