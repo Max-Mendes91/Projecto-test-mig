@@ -14,44 +14,49 @@ function validateInputs() {
     inputs.forEach(input => {
         const value = input.value.trim();
 
-        // TODO: check if empty
-        if (value === '')
+            // TODO: check if empty
+        if (value === '') {
             showError(input, `${input.placeholder} cannot be empty`);
-        console.log(value, 'error');
-
-
-        // TODO: check if email is valid
-        if (value === 'email' && !isValidEmail(value)) {
+            // TODO: check if email is valid
+        } else if (input.type === 'email' && !isValidEmail(value)) {
             showError(input, 'Looks like this is not an email', true)
-        }
-        // TODO: otherwise mark success
-        else {
+            // TODO: otherwise mark success
+        } else {
             showSuccess(input)
         }
-        console.log(value, 'click');
+
     });
 }
 
 // Show error state
 function showError(input, message, isEmail = false) {
     // TODO: remove old error if exists
-    let existsError = input.parentNode.querySelector('.error-message');
-    if (existsError) existsError.remove();
+    let existingError = input.parentNode.querySelector('.error-message');
+    if (existingError) existsError.remove();
+
     // TODO: style input as error
     input.classList.add('border-red-500');
     input.classList.remove('border-gray-900');
+
     // TODO: handle email-specific case (placeholder, etc.)
-    input.style.backgroundImage = "url('./images/icon-error.svg')"
-    input.style.backgroundRepeat = 'no-repeat'
-    input.style.backgrounPosition = 'righ 1rem center'
+    input.style.backgroundImage = "url('./images/icon-error.svg')";
+    input.style.backgroundRepeat = 'no-repeat';
+    input.style.backgroundPosition = 'righ 1rem center';
+
     // TODO: add error message text
     if (!isEmail && input.type === 'email') {
-        ;
         input.value = '';
         input.placeholder = 'email@example/com';
         input.classList.remove('placeholder-gray-400');
         input.classList.add('placeholder-red-500')
     }
+    // create error text
+    const error = document.createElement('p');
+    error.className = 'error-message text-red-500 text-sm mt-1 text-right italic';
+    error.innerText = message;
+
+    // make sure error displays under the input
+    input.insertAdjacentElement('afterend', error);
 }
 
 // Show success state
@@ -61,7 +66,7 @@ function showSuccess(input) {
     if (existsError) existsError.remove();
     // TODO: reset input styles to normal
     input.classList.remove('border-red-500')
-    input.classList.add(border - gray - 900)
+    input.classList.add('border-gray-900')
     // TODO: reset email placeholder if needed
     input.classList.remove('placeholder-red-500')
     input.classList.add('placeholder-gray-400')
