@@ -76,3 +76,7 @@ function showSuccess(input) {
 function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
 }
+console.log(!!"0" && !!0);
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 1000);
+}
