@@ -8,10 +8,10 @@ form.addEventListener('submit', (e) => {
     const oldError = form.querySelector('.error-message');
     if (oldError) oldError.remove();
 
-    if(username === '' || email === ''){
+    if (username === '' || email === '') {
         const error = document.createElement('p');
         error.textContent = 'Please fill all fields';
-        error.style.color='red';
+        error.style.color = 'red';
         error.classList.add('error-message');
         form.append(error);
     };
@@ -56,23 +56,54 @@ ageForm.addEventListener('submit', (e) => {
     // console.log('click');
 
     const oldErrorMessage = ageForm.querySelector('.errorMessage')
-    if(oldErrorMessage) oldErrorMessage.remove();
+    if (oldErrorMessage) oldErrorMessage.remove();
 
 
-    const errorMessage =document.createElement('p');
+    const errorMessage = document.createElement('p');
     errorMessage.classList.add('errorMessage');
 
 
     const age = document.querySelector('#age').value.trim();
-    if(age === ''){
+    if (age === '') {
         errorMessage.textContent = 'Please enter your age';
         errorMessage.style.color = 'red';
-    }else if (age < 18){
+    } else if (age < 18) {
         errorMessage.textContent = 'You must be 18 or older';
         errorMessage.style.color = 'red';
-    }else{
+    } else {
         errorMessage.textContent = 'Access granted';
         errorMessage.style.color = 'green'
     }
     ageForm.appendChild(errorMessage)
-}); 
+});
+
+
+//TEXT AREA 
+const message = document.querySelector('#message')
+const counter = document.querySelector('#counter')
+
+message.addEventListener('input', () => {
+    
+    const remaining = 100 - message.value.length;
+    counter.textContent = remaining;
+    
+    if (remaining > 0) {
+        counter.textContent = `${remaining} chars remaining`;
+        counter.style.color = 'black';
+    }else if(remaining <= 0){
+        counter.textContent = `${remaining} chars remaining`;
+        counter.style.color = 'red';
+    }
+})
+
+const score = 70;
+
+if (score > 40) {
+    console.log('Average');
+} else if (score > 60) {
+    console.log('Good');
+} else if (score > 80) {
+    console.log('Excellent');
+} else {
+    console.log('Fail');
+}
