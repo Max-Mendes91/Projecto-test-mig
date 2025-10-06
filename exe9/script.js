@@ -96,14 +96,3 @@ message.addEventListener('input', () => {
     }
 })
 
-const score = 70;
-
-if (score > 40) {
-    console.log('Average');
-} else if (score > 60) {
-    console.log('Good');
-} else if (score > 80) {
-    console.log('Excellent');
-} else {
-    console.log('Fail');
-}
