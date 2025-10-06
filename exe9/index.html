@@ -1,41 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
+
 <body>
     <div class="flex gap-10 mt-10">
-    <form id="signup" class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md flex flex-col gap-4">
-        <input type="text" id="username" placeholder="Username" class="border border-gray-900 bg-purple-200 hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-md w-full max-w-md mb-6 text-cente" />
-        <input type="email" id="email" placeholder="Email" class=" border border-gray-900  bg-purple-200 hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-md w-full max-w-md mb-6 text-cente" />
-        <button type="submit" class="bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-medium transition shadow-md mt-4 w-full">Sign up</button>
-    </form>
+        <form id="signup" class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md flex flex-col gap-4">
+            <input type="text" id="username" placeholder="Username"
+                class="border border-gray-900 bg-purple-200 hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-md w-full max-w-md mb-6 text-cente" />
+            <input type="email" id="email" placeholder="Email"
+                class=" border border-gray-900  bg-purple-200 hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-md w-full max-w-md mb-6 text-cente" />
+            <button type="submit"
+                class="bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-medium transition shadow-md mt-4 w-full">Sign
+                up</button>
+        </form>
 
-    <!-- new exercise -->
-    <form id="signup2" class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md flex flex-col gap-4">
-        <input type="password" id="password" placeholder="Password" class=" border border-gray-900 bg-purple-200 hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-md w-full max-w-md mb-6" />
-        <input type="password" id="confirmPassword" placeholder="Confirm Password" class=" border border-gray-900 bg-purple-200 hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-md w-full max-w-md mb-6 text-cente" />
-        <button type="submit" class="bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-medium transition shadow-md mt-4 w-full">Confirm Password</button>
-    </form>
+        <!-- new exercise -->
+        <form id="signup2" class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md flex flex-col gap-4">
+            <input type="password" id="password" placeholder="Password"
+                class=" border border-gray-900 bg-purple-200 hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-md w-full max-w-md mb-6" />
+            <input type="password" id="confirmPassword" placeholder="Confirm Password"
+                class=" border border-gray-900 bg-purple-200 hover:bg-purple-700 text-white px-6 py-3 rounded-lg shadow-md w-full max-w-md mb-6 text-cente" />
+            <button type="submit"
+                class="bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-medium transition shadow-md mt-4 w-full">Confirm
+                Password</button>
+        </form>
 
-    <form id="ageForm" class="bg-white shadow-lg rounded-lg p-6 w-full max-w-sm flex flex-col gap-4">
-        <input type="number" id="age" placeholder="Enter your age"
-            class="border border-gray-900 bg-purple-200 px-4 py-2 rounded-lg" />
-        <button type="submit" class="bg-purple-700 text-white px-4 py-2 rounded-lg hover:bg-purple-800">
-            Check age
-        </button>
-    </form>
+        <form id="ageForm" class="bg-white shadow-lg rounded-lg p-6 w-full max-w-sm flex flex-col gap-4">
+            <input type="number" id="age" placeholder="Enter your age"
+                class="border border-gray-900 bg-purple-200 px-4 py-2 rounded-lg" />
+            <button type="submit" class="bg-purple-700 text-white px-4 py-2 rounded-lg hover:bg-purple-800">
+                Check age
+            </button>
+        </form>
+        <div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md ">
+            <textarea id="message" maxlength="100" placeholder="Type your message..."
+                class="border border-gray-900 bg-purple-200 px-4 py-2 rounded-lg w-full"></textarea>
 
-    <div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-        <textarea id="message" maxlength="100" placeholder="Type your message..."
-            class="border border-gray-900 bg-purple-200 px-4 py-2 rounded-lg w-full"></textarea>
-    
-        <p id="counter" class="mt-2 text-gray-700">Characters remaining: 100</p>
+            <p id="counter" class="mt-2 text-gray-700">Characters remaining: 100</p>
+        </div>
     </div>
-</div>
-<script src="script.js"></script>
+
+
+    <script src="script.js"></script>
 </body>
+
 </html>
