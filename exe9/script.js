@@ -47,3 +47,32 @@ form2.addEventListener('submit', (e) => {
 
     form2.append(message);
 })
+
+// AGE VERIFIER
+const ageForm = document.querySelector('#ageForm');
+
+ageForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // console.log('click');
+
+    const oldErrorMessage = ageForm.querySelector('.errorMessage')
+    if(oldErrorMessage) oldErrorMessage.remove();
+
+
+    const errorMessage =document.createElement('p');
+    errorMessage.classList.add('errorMessage');
+
+
+    const age = document.querySelector('#age').value.trim();
+    if(age === ''){
+        errorMessage.textContent = 'Please enter your age';
+        errorMessage.style.color = 'red';
+    }else if (age < 18){
+        errorMessage.textContent = 'You must be 18 or older';
+        errorMessage.style.color = 'red';
+    }else{
+        errorMessage.textContent = 'Access granted';
+        errorMessage.style.color = 'green'
+    }
+    ageForm.appendChild(errorMessage)
+}); 
