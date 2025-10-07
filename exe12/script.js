@@ -35,8 +35,8 @@ todoForm.addEventListener('submit', (e) => {
 
     //add to the Array
     todos.push(todoObj)
-
-    // console.log(todos);
+    console.log(todos);
+    
 
     //render
     function renderTodos() {
@@ -44,16 +44,19 @@ todoForm.addEventListener('submit', (e) => {
         todoList.className = "flex-1 font-medium text-gray-800";
 
         todos.forEach(todo => {
-            
-            const list = document.createElement('li');
 
+            const list = document.createElement('li');
+            // console.log(list);
+            
             const input = document.createElement('input');
             input.type = "checkbox";
             input.className = 'w-5 h-5 text-green-500 border-gray-300 rounded focus:ring-2 focus:ring-green-400'
             input.checked = todo.completed;
+            // console.log(input);
             
             const textSpan = document.createElement('span')
             textSpan.textContent = todo.text;
+            // console.log(textSpan);
             
 
             if (todo.completed) {
@@ -62,21 +65,21 @@ todoForm.addEventListener('submit', (e) => {
 
             const deleteBtn = document.createElement('button')
             deleteBtn.textContent = 'Delete'
-            deleteBtn.className ="ml-auto text-red-500 hover:text-red-700 font-bold";
+            deleteBtn.className = "ml-auto text-red-500 hover:text-red-700 font-bold";
 
             //event listener for button
-            deleteBtn.addEventListener('click', function(){
+            deleteBtn.addEventListener('click', function () {
                 todos = todos.filter(item => item.id !== todo.id)
                 renderTodos()
             })
 
             //click handler for the check box;
             input.addEventListener('click', function () {
-                todo.completed = !todo.completed;
+                toggleTodo(todo.id)
                 renderTodos();
             });
-
             
+
             list.appendChild(input);
             list.appendChild(textSpan);
             list.appendChild(deleteBtn);
@@ -87,4 +90,9 @@ todoForm.addEventListener('submit', (e) => {
     renderTodos();
     todoForm.reset();
 })
+
+function toggleTodo(idToToggle) {
+   todos = todos.map(todo => todo.id === idToToggle ? ({ ...todo, completed: !todo.completed }) : todo);
+}
+
 
