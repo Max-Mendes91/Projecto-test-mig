@@ -6,7 +6,7 @@ const todoList = document.querySelector('#todo-list');
 
 let todos = [];
 
-//render
+//renderTodos need to define out in the global scope and with parameter set to whatever we want to call , so it rendTodos can be called anywahere is needed .
 function renderTodos(arrayToRender) {
     todoList.innerHTML = '';
     todoList.className = "flex-1 font-medium text-gray-800";
