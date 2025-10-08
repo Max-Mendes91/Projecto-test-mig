@@ -1,8 +1,8 @@
 const todoForm = document.querySelector('#todo-form');
-const sortBy = document.querySelector('#sort-by');
-const filterCategory = document.querySelector('#filter-category');
 const activeCount = document.querySelector('#active-count');
 const todoList = document.querySelector('#todo-list');
+
+
 
 let todos = [];
 loadTodos();
@@ -22,15 +22,33 @@ function renderTodos(arrayToRender) {
         input.checked = todo.completed;
         // console.log(input);
 
+
+        // text
         const textSpan = document.createElement('span')
         textSpan.textContent = todo.text;
         // console.log(textSpan);
-
-
         if (todo.completed) {
             textSpan.className = "line-through text-gray-400";
         }
 
+
+        //priority text
+        const priorityBadge = document.createElement('span');
+        priorityBadge.textContent = todo.priority;
+        switch (todo.priority) {
+            case 'high':
+                priorityBadge.className = "text-red-600 font-semibold bg-red-100 px-2 py-1 rounded";
+                break;
+            case 'medium':
+                priorityBadge.className = "text-yellow-600 font-semibold bg-yellow-100 px-2 py-1 rounded";
+                break;
+            case 'low':
+                priorityBadge.className = "text-green-600 font-semibold bg-green-100 px-2 py-1 rounded";
+                break;
+            default:
+                priorityBadge.className = "text-gray-600 font-semibold bg-gray-100 px-2 py-1 rounded";
+        }
+        //delete button
         const deleteBtn = document.createElement('button')
         deleteBtn.textContent = 'Delete'
         deleteBtn.className = "ml-auto text-red-500 hover:text-red-700 font-bold";
@@ -39,7 +57,7 @@ function renderTodos(arrayToRender) {
         deleteBtn.addEventListener('click', function () {
             todos = todos.filter(item => item.id !== todo.id)
             //save data
-
+            saveTodos();
             renderTodos(todos)
         })
 
@@ -47,14 +65,15 @@ function renderTodos(arrayToRender) {
         input.addEventListener('click', function () {
             toggleTodo(todo.id)
             //save data
-
+            saveTodos()
             renderTodos(todos);
-           
+
         });
 
 
         list.appendChild(input);
         list.appendChild(textSpan);
+        list.appendChild(priorityBadge);
         list.appendChild(deleteBtn);
         list.className = "bg-white rounded-lg shadow p-4 flex items-center gap-4 mt-5";;
         todoList.appendChild(list);
@@ -83,7 +102,7 @@ todoForm.addEventListener('submit', (e) => {
         id: Date.now(),
         text: todoInput,
         priority: todoPriority,
-        categorie: filterCategory.value,
+        category: todoCategory,
         completed: false,
         createdAt: new Date(),
     }
@@ -93,24 +112,44 @@ todoForm.addEventListener('submit', (e) => {
     todos.push(todoObj)
     console.log(todos);
     //save data 
-
+    saveTodos();
     renderTodos(todos);
     todoForm.reset();
 })
+
+//event listner for the filters
+let currentStatus = 'all';
+let selectedPriority = 'all';
+let selectedCategory = 'all';
 
 
 const filterBtn = document.querySelectorAll('.filter-btn')
 filterBtn.forEach((button) => {
     button.addEventListener('click', function () {
-        const filteredTodos = applyFilters(button.dataset.filter)
-        renderTodos(filteredTodos);
-        
+        currentStatus = button.dataset.filter;
+        const filtered = applyFilters(currentStatus, selectedPriority, selectedCategory)
+        renderTodos(filtered);
+
     })
-    
+
+})
+
+const filterCategory = document.querySelector('#filter-category');
+filterCategory.addEventListener('change', () => {
+    selectedCategory = filterCategory.value;
+    const filtered = applyFilters(currentStatus, selectedPriority, selectedCategory);
+    renderTodos(filtered);
+
 })
 
 
-
+const sortBy = document.querySelector('#sort-by');
+sortBy.addEventListener('change', () => {
+    // selectedPriority = sortBy.value;
+    const filtered = applyFilters(currentStatus, selectedPriority.value, selectedCategory.value, sortBy.value);
+    renderTodos(filtered)
+    console.log(sortBy)
+})
 
 
 
@@ -124,20 +163,32 @@ function toggleTodo(idToToggle) {
 
 // return boolean as well , in case checkbox is marked it will display the correct based on the set done at the beggining  that the obj was defined , 
 // it was defined as false so we can play with that 
-function applyFilters(filterType) {
-    let filteredTodos;
+function applyFilters(currentStatus, selectedPriority, selectedCategory, sortBy) {
+    return todos
+        .filter(todo => {
+            if (currentStatus === 'active') return !todo.completed
+            if (currentStatus === 'completed') return todo.completed
+            return true
+        })
+        .filter(todo => {
+            if (!selectedPriority || selectedPriority === 'all') return true
+            return todo.priority === selectedPriority
+        })
+        .filter(todo => {
+            if (!selectedCategory || selectedCategory === 'all') return true
+            return todo.category === selectedCategory
+        })
 
-    if (filterType === 'all') {
-        console.log('max');
-        return todos;
-    } else if (filterType === 'active') {
-        console.log('maxe');
-        return todos.filter(todo => !todo.completed);
-
-    } else if (filterType === 'completed') {
-        console.log('fodassee');
-        return  todos.filter(todo => todo.completed)
+    if (sortBy === 'newest') {
+        result = result.sort((a, b) => b.createdAt - a.createdAt);
+    } else if (sortBy === 'oldest') {
+        result = result.sort((a, b) => a.createdAt - b.createdAt);
+    } else if (sortBy === 'priority') {
+        const order = { high: 3, medium: 2, low: 1 };
+        result = result.sort((a, b) => order[b.priority] - order[a.priority]);
     }
+
+    return result;
 }
 
 function saveTodos() {
