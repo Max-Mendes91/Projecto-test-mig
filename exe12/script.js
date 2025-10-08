@@ -5,7 +5,7 @@ const activeCount = document.querySelector('#active-count');
 const todoList = document.querySelector('#todo-list');
 
 let todos = [];
-
+loadTodos();
 //renderTodos need to define out in the global scope and with parameter set to whatever we want to call , so it rendTodos can be called anywahere is needed .
 function renderTodos(arrayToRender) {
     todoList.innerHTML = '';
@@ -38,13 +38,18 @@ function renderTodos(arrayToRender) {
         //event listener for button
         deleteBtn.addEventListener('click', function () {
             todos = todos.filter(item => item.id !== todo.id)
+            //save data
+
             renderTodos(todos)
         })
 
         //click handler for the check box;
         input.addEventListener('click', function () {
             toggleTodo(todo.id)
+            //save data
+
             renderTodos(todos);
+           
         });
 
 
@@ -87,6 +92,7 @@ todoForm.addEventListener('submit', (e) => {
     //add to the Array
     todos.push(todoObj)
     console.log(todos);
+    //save data 
 
     renderTodos(todos);
     todoForm.reset();
@@ -98,6 +104,7 @@ filterBtn.forEach((button) => {
     button.addEventListener('click', function () {
         const filteredTodos = applyFilters(button.dataset.filter)
         renderTodos(filteredTodos);
+        
     })
     
 })
@@ -131,4 +138,18 @@ function applyFilters(filterType) {
         console.log('fodassee');
         return  todos.filter(todo => todo.completed)
     }
+}
+
+function saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(todos))
+}
+
+function loadTodos() {
+    const stored = localStorage.getItem('todos');
+    if (stored) {
+        todos = JSON.parse(stored);
+    } else {
+        todos = []
+    }
+    renderTodos(todos);
 }
